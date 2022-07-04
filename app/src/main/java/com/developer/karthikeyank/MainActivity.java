@@ -2,14 +2,16 @@ package com.developer.karthikeyank;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -21,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
     private final String input = "What is the output of 2 *2?     Tell us Your Input?";
     private ImageView imageView;
     private TextToSpeech t1;
-    private ProgressBar progressBar;
-    private TextView bottom_text,textView;
+    private TextView textView;
     private  int i = 0;
-    private final String anim = "( -  - )\n*\nWhat is the output of 2 *2?";
+    private final String anim = "What is the output of 2 *2?";
+    private ConstraintLayout constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         imageView = findViewById(R.id.imageView);
         imageView.setEnabled(false);
-        progressBar=findViewById(R.id.progressBar2);
-        bottom_text=findViewById(R.id.textView_initialize);
         textView=findViewById(R.id.textview);
+        constraintLayout = findViewById(R.id.constrainnn);
+        constraintLayout.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,R.anim.updown));
 
         Speech(input);
 
@@ -67,20 +69,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     //this will perform speech is finished or not
     private void isSpeak() {
         if (t1.isSpeaking()){
             isSpeak();
         }
         else {
-            progressBar.animate().alpha(0).setDuration(1000);
-            bottom_text.animate().alpha(0).setDuration(1000);
             imageView.setEnabled(true);
             imageView.animate().alpha(1).setDuration(1000);
-            textView.setText("( -  - )\n*\nWhat is the output of 2 *2?\n\nTap To Speak");
-            Toast.makeText(this, "Speech Finished!", Toast.LENGTH_SHORT).show();
             imageView.performClick();
         }
     }
@@ -92,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             public void onInit(int i) {
                 if (i!=TextToSpeech.ERROR){
                     t1.setLanguage(Locale.ENGLISH);
-                    t1.setSpeechRate(1.0f);
+                    t1.setSpeechRate(0.7f);
                     t1.speak(in,TextToSpeech.QUEUE_FLUSH,null);
                 }
             }
@@ -130,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     AnimateText(anim);
                 }
-            },40);
+            },100);
 
         }
     }
