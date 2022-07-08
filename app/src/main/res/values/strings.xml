@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">VoiceApp</string>
+    <string name="app_name">QVoiceApp</string>
     <string name="empty" />
     <string name="voice">voice</string>
     <string name="make_sure_you_are_connected_with_internet">Make Sure you are Connected with Internet.</string>
+    <string name="quiz_nvoice_app">Quiz\nVoice App</string>
+    <string name="internet_text">Make Sure You are connected with Internet</string>
 </resources>

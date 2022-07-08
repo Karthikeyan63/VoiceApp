@@ -23,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
             public void onInit(int i) {
                 if (i!=TextToSpeech.ERROR){
                     t1.setLanguage(Locale.ENGLISH);
-                    t1.setSpeechRate(0.7f);
+                    t1.setSpeechRate(0.9f);
                     t1.speak(in,TextToSpeech.QUEUE_FLUSH,null);
                 }
             }

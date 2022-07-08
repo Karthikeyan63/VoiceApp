@@ -7,11 +7,11 @@
     tools:context=".SplashScreen">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView_splash_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aclonica"
-        android:text="Voice App"
+        android:text="@string/quiz_nvoice_app"
         android:textAlignment="center"
         android:textColor="#D31010"
         android:textSize="28sp"
@@ -24,24 +24,36 @@
         app:layout_constraintVertical_bias="0.367" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView_splash"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1"
+        app:layout_constraintTop_toBottomOf="@+id/textView_splash_text"
         app:srcCompat="@drawable/voice" />
 
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lotties"
+        android:id="@+id/lotties_logo"
         android:layout_width="100dp"
         android:layout_height="80dp"
-        app:lottie_rawRes="@raw/loading"
+        app:layout_constraintBottom_toTopOf="@+id/textView_internet_splash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading" />
+
+    <TextView
+        android:id="@+id/textView_internet_splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/internet_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
