@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         Number2=MaterialsQ.RandomNumber();
         question_top_seek.setText("Question "+MaterialsQ.Running_Question+"/"+MaterialsQ.Total_Question);
         question.setText("What is "+Number1+" * "+Number2+" = ?");
-        String total_speak = "Question "+MaterialsQ.Running_Question+" of "+MaterialsQ.Total_Question+"     What is "+Number1+" * "+Number2;
+        String total_speak = "Question "+MaterialsQ.Running_Question+"     What is "+Number1+" * "+Number2;
         constraintLayout.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,R.anim.updown));
         Speech(total_speak);
         new Handler().postDelayed(new Runnable() {
@@ -138,6 +138,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void RunCount(int counts){
         if(counts==1){
+            retry.setEnabled(false);
+        }
+        if(counts==0){
             MoveNextQuestion();
         }else {
             count_down.setText(String.valueOf(counts));
@@ -161,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 if (MaterialsQ.Total_Question==MaterialsQ.Running_Question){
                     AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("Total Score").setMessage("You Scored : "+MaterialsQ.Total_Score)
+                            .setTitle("Total Score : "+MaterialsQ.Total_Question).setMessage("You Scored : "+MaterialsQ.Total_Score)
                             .setCancelable(false)
                             .setPositiveButton("Retry", new DialogInterface.OnClickListener() {
                                 @Override
